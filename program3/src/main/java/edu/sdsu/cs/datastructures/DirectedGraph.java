@@ -7,14 +7,38 @@ import java.util.PriorityQueue;
 import java.util.HashMap;
 import java.util.TreeMap;
 
+
+private int myNumVertices;
+private int myNumEdges;
+
+
+
 /*
  * Identifies the functions required for a graph object.
  *
  * @param <V> The type to use for unique vertex names (e.g. String)
  */
-//public class DirectedGraph<V> implements IGraph<V> {
-//public class DirectedGraph {
-    interface IGraph<V> {
+    class DirectedGraph {
+
+    public class inter <V> implements IGraph<V>{
+    //IGraph<V> igraph =new IGraph<V>() {
+
+        //public void add(V vertexName);
+        //public void connect(V start, V destination);
+        //public boolean contains(V label);
+        //public void clear();
+        //public boolean contains(V label);
+        //public void disconnect(V start, V destination);
+        //public boolean isConnected(V start, V destination);
+        //public Iterable<V> neighbors(V vertexName);
+        //public void remove(V vertexName);
+        //public List<V> shortestPath(V start, V destination);
+        //public int size();
+        //public Iterable<V> vertices();
+        //public IGraph<V> connectedGraph(V origin);
+
+
+
 
     /*
      * Inserts a vertex with the specified name into the Graph if it
@@ -24,6 +48,16 @@ import java.util.TreeMap;
      */
     @Override
     public void add(V vertexName) {
+
+        Vertex v;
+        v = myVertices.get(name);
+        if (v == null) {
+            v = new Vertex(name);
+            myVertices.put(name, v);
+            myAdjList.put(v, new TreeSet<Vertex>());
+            myNumVertices += 1;
+        }
+        return v;
 
     }
 
@@ -158,9 +192,41 @@ import java.util.TreeMap;
     not present in the graph
      */
     @Override
-        public List<V> shortestPath(V start, V destination) {
-            return V;
-        }
+    public List<V> shortestPath(V start, V destination) {
+
+            final int INF = Integer.MAX_VALUE; //INF
+
+            start = null;
+            destination = null;
+            double weight = 0;
+            List<V> ListArray = new ArrayList<>();
+
+            //IGraph<V> igraph =new IGraph[];
+
+
+            if (weight == 0 && start == destination)
+                return ListArray = null;
+
+            if (weight == 1 && IGraph[start][destination] != INF)
+                return IGraph [start][destination];
+
+            if (weight <= 0)
+                return INF;
+
+            V res = INF;
+
+            // Go to all adjacents of u and recur
+            for (int i = 0; i < V; i++)
+            {
+                if (IGraph[start][i] != INF && start != i && destination != i)
+                {
+                    int rec_res = shortestPath(IGraph, i, destination, weight-1);
+                    if (rec_res != INF)
+                        res = Math.min(res, IGraph[start][i] + rec_res);
+                }
+            }
+            return res;
+    }
 
 
 
